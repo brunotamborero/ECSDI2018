@@ -14,9 +14,10 @@ http://127.0.0.1:5000/servicio?x=3&y=4
 
 @author: javier
 """
-__author__ = 'bejar'
 
+from __future__ import print_function
 from flask import Flask, request
+__author__ = 'bejar'
 
 app = Flask(__name__)
 

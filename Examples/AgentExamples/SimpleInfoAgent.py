@@ -8,8 +8,7 @@ Agente que se registra como agente de hoteles y espera peticiones
 
 @author: javier
 """
-__author__ = 'javier'
-
+from __future__ import print_function
 from multiprocessing import Process, Queue
 import socket
 import argparse
@@ -24,6 +23,7 @@ from AgentUtil.ACLMessages import build_message, send_message, get_message_prope
 from AgentUtil.Agent import Agent
 from AgentUtil.Logging import config_logger
 
+__author__ = 'javier'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -233,7 +233,7 @@ def agentbehavior1(cola):
         if v == 0:
             fin = True
         else:
-            print v
+            print(v)
 
             # Selfdestruct
             # requests.get(InfoAgent.stop)

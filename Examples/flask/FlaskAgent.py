@@ -35,13 +35,16 @@ FlaskAgent
 
 """
 
-__author__ = 'bejar'
-
+from __future__ import print_function
 from flask import Flask, request
 import argparse
 import requests
 from requests import ConnectionError
 from multiprocessing import Process
+
+__author__ = 'bejar'
+
+
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -71,7 +74,7 @@ def servicio():
     :return:
     """
     x = request.args['content']
-    print 'recibido', x
+    print('recibido', x)
     return x
 
 
@@ -97,13 +100,13 @@ def behavior(mess, comm):
         except ConnectionError:
             pass
 
-    print 'Is Alive'
+    print('Is Alive')
 
     # Enviamos todos los mensajes
     for m in mess:
-        print 'enviando', m
+        print('enviando', m)
         r = requests.get(address + 'comunica', params={'content': m})
-        print r.text
+        print(r.text)
 
 
 if __name__ == '__main__':
@@ -123,4 +126,4 @@ if __name__ == '__main__':
     if args.acomm is not None:
         ab.join()
 
-    print 'The End'
+    print('The End')

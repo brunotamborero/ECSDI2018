@@ -32,22 +32,22 @@ Semantics2
 
 """
 
-
+from __future__ import print_function
 from semantics3 import Products
 from AgentUtil.APIKeys import SEM3KEY, SEM3SECRET
 
 __author__ = 'bejar'
 
+if __name__ == '__main__':
+    sem3 = Products(
+        api_key=SEM3KEY,
+        api_secret=SEM3SECRET
+    )
 
-sem3 = Products(
-    api_key=SEM3KEY,
-    api_secret=SEM3SECRET
-)
+    sem3.products_field("search", "iphone")
 
-sem3.products_field("search", "iphone")
+    # Run the request
+    results = sem3.get_products()
 
-# Run the request
-results = sem3.get_products()
-
-# View the results of the request
-print results['results']
+    # View the results of the request
+    print(results['results'])

@@ -33,48 +33,49 @@ OpenProductData
 
 """
 
+
+from __future__ import print_function
+import requests
+
 __author__ = 'bejar'
 
 
-import requests
+if __name__ == '__main__':
+    OPD_ENDPOINT = 'http://pod.opendatasoft.com/api/records/1.0/search/'
+
+    # Cosas con 'fruit' en algun campo
+    r = requests.get(OPD_ENDPOINT,
+                     params={'dataset':'pod_gtin', 'q': 'fruit', 'rows': 20
+                            })
+    # Extraemos la respuesta json como un diccionario python
+    dic = r.json()
+
+    # La respuesta esta en el campo records
+    res = dic['records']
+
+    print(len(res))
+
+    # La respuesta es una lista de objetos donde los datos de los productos estan en el campo 'fields'
+    for prod in res:
+        pr = prod['fields']
+        for p in  pr.keys():
+            print(p, pr[p])
+        print('-----------------------------')
 
 
+    # Productos que tengan el texto 'Timberland' en algun campo dentro de la categoria 'Footwear'
+    r = requests.get(OPD_ENDPOINT,
+                     params={'dataset':'pod_gtin', 'rows': 20, 'q': 'Timberland',
+                             'refine.gpc_s_nm': 'Footwear'
+                            })
 
-OPD_ENDPOINT = 'http://pod.opendatasoft.com/api/records/1.0/search/'
+    dic = r.json()
+    res = dic['records']
 
-# Cosas con 'fruit' en algun campo
-r = requests.get(OPD_ENDPOINT,
-                 params={'dataset':'pod_gtin', 'q': 'fruit', 'rows': 20
-                        })
-# Extraemos la respuesta json como un diccionario python
-dic = r.json()
+    print(len(res))
 
-# La respuesta esta en el campo records
-res = dic['records']
-
-print len(res)
-
-# La respuesta es una lista de objetos donde los datos de los productos estan en el campo 'fields'
-for prod in res:
-    pr = prod['fields']
-    for p in  pr.keys():
-        print p, pr[p]
-    print '-----------------------------'
-
-
-# Productos que tengan el texto 'Timberland' en algun campo dentro de la categoria 'Footwear'
-r = requests.get(OPD_ENDPOINT,
-                 params={'dataset':'pod_gtin', 'rows': 20, 'q': 'Timberland',
-                         'refine.gpc_s_nm': 'Footwear'
-                        })
-
-dic = r.json()
-res = dic['records']
-
-print len(res)
-
-for prod in res:
-    pr = prod['fields']
-    for p in pr.keys():
-        print p, pr[p]
-    print '-----------------------------'
+    for prod in res:
+        pr = prod['fields']
+        for p in pr.keys():
+            print(p, pr[p])
+        print('-----------------------------')

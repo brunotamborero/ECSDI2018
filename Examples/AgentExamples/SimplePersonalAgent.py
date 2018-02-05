@@ -12,8 +12,7 @@ Created on 09/02/2014
 @author: javier
 """
 
-__author__ = 'javier'
-
+from __future__ import print_function
 from multiprocessing import Process
 import socket
 import argparse
@@ -28,6 +27,8 @@ from AgentUtil.FlaskServer import shutdown_server
 from AgentUtil.ACLMessages import build_message, send_message
 from AgentUtil.Agent import Agent
 from AgentUtil.Logging import config_logger
+
+__author__ = 'javier'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()

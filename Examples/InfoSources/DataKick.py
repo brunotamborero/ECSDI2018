@@ -17,7 +17,6 @@ DataKicke
 
     Que permite buscar entre los productos con un texto libre
 
-
 :Authors: bejar
     
 
@@ -27,19 +26,22 @@ DataKicke
 
 """
 
+from __future__ import print_function
 import requests
 from requests.exceptions import ReadTimeout
+
 __author__ = 'bejar'
 
-DATAKICK_ENDPOINT = 'https://www.datakick.org/api/items'
+if __name__ == '__main__':
+    DATAKICK_ENDPOINT = 'https://www.datakick.org/api/items'
 
-r = requests.get(DATAKICK_ENDPOINT,
-                 params={'query':'oil'
-                         })
+    r = requests.get(DATAKICK_ENDPOINT,
+                     params={'query':'oil'
+                             })
 
-dic = r.json()
+    dic = r.json()
 
-for prod in dic:
-    for p in  prod.keys():
-        print p, prod[p]
-    print '-----------------------------'
+    for prod in dic:
+        for p in  prod.keys():
+            print(p, prod[p])
+        print '-----------------------------'

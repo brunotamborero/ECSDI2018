@@ -10,14 +10,15 @@ Created on 12/02/2014
 
 """
 
-__author__ = 'javier'
-
+from __future__ import print_function
 from multiprocessing import Process
+
+__author__ = 'javier'
 
 
 def cuenta(li, ls):
     for i in range(li, ls):
-        print i, '\n'
+        print(i, '\n')
 
 
 if __name__ == '__main__':

@@ -17,8 +17,7 @@ directory-service-ontology.owl
 @author: javier
 """
 
-__author__ = 'javier'
-
+from __future__ import print_function
 from multiprocessing import Process, Queue
 import socket
 import argparse
@@ -33,6 +32,7 @@ from AgentUtil.Agent import Agent
 from AgentUtil.ACLMessages import build_message, get_message_properties
 from AgentUtil.Logging import config_logger
 
+__author__ = 'javier'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -240,10 +240,10 @@ def agentbehavior1(cola):
             pass
         v = cola.get()
         if v == 0:
-            print v
+            print(v)
             return 0
         else:
-            print v
+            print(v)
 
 
 if __name__ == '__main__':

@@ -11,6 +11,7 @@ Webservice flask con tres entradas
 @author: javier
 """
 
+from __future__ import print_function
 from multiprocessing import Process
 from flask import Flask, request, render_template
 from time import sleep
@@ -54,9 +55,9 @@ def mainloop():
     :return:
     """
     for i in range(10):
-        print 'Este poceso es concurrente', i
+        print('Este poceso es concurrente', i)
         sleep(3)
-    print 'y ya se acabo'
+    print('y ya se acabo')
 
 
 if __name__ == "__main__":

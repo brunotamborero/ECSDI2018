@@ -1,5 +1,5 @@
-DistributedSolver
-=================
+DistributedSolverClosed
+=======================
 
 Sistema distribuido para resolucion de problemas simples.
 
@@ -12,8 +12,10 @@ El sistema esta formado por:
   * Un logger de la actividad de los solvers genericos
   * Un cliente que manda peticiones a los solver genericos
 
-El servicio de directorio hace de servicio de descubrimiento y es utilizado por los agentes cada vez que tienen que
-asignar una tarea a otros agentes
+El servicio de directorio hace de servicio de descubrimiento.
+Los solvers genericos se registran en el servicio de directorio.
+Lo solvers especificos buscan los solvers genericos en el servicio de directorio y se asocian a un numero de ellos (2)
+Los solvers genericos tienen un limite de solvers especificos que pueden tener asociados (2 de cada).
 
  * DirectoryService.py
 
@@ -100,6 +102,6 @@ Pasos:
  4- Inicial Client y abrir en el navegador las paginas /iface y /info
  5- Ejecutar problemas desde la pagina /iface del cliente
 
-Si se va a inicial el sistema desde varias maquinas se han de ejecutar los agentes con el parametro --open
+Si se va a iniciar el sistema desde varias maquinas se han de ejecutar los agentes con el parametro --open
 
 

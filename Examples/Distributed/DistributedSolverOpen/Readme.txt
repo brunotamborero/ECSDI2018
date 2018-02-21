@@ -1,5 +1,5 @@
-DistributedSolver
-=================
+DistributedSolverOpen
+=====================
 
 Sistema distribuido para resolucion de problemas simples.
 
@@ -100,6 +100,6 @@ Pasos:
  4- Inicial Client y abrir en el navegador las paginas /iface y /info
  5- Ejecutar problemas desde la pagina /iface del cliente
 
-Si se va a inicial el sistema desde varias maquinas se han de ejecutar los agentes con el parametro --open
+Si se va a iniciar el sistema desde varias maquinas se han de ejecutar los agentes con el parametro --open
 
 

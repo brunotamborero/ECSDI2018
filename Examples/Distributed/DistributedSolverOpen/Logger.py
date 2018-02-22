@@ -60,7 +60,6 @@ def message():
                 logging[id][prob] = 1
         else:
             logging[id] = {prob: 1}
-    print(logging)
     return 'OK'
 
 

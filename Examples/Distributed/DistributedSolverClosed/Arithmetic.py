@@ -113,7 +113,7 @@ if __name__ == '__main__':
     if args.directory is None:
         raise NameError('A Directory Service addess is needed')
     else:
-        diraddress = args.directory
+        diraddress = args.dir
 
     # El solver aritmetico busca en el servicio de directorio 2 solvers con los que asociarse
     solveradd = 'http://%s:%d' % (socket.gethostname(), port)

@@ -120,8 +120,7 @@ def send_message(probtype, problem):
         solveradd = solveradd[4:]
 
         problems[probid] = [probtype, problem, 'PENDING']
-        clientaddress = 'http://%s:%d' % (clientid, port)
-        mess = 'SOLVE|%s,%s,%s,%s' % (probtype, clientaddress, probid, sanitize(problem))
+        mess = 'SOLVE|%s,%s,%s,%s' % (probtype, clientadd, probid, sanitize(problem))
         resp = requests.get(solveradd + '/message', params={'message': mess}).text
         if 'ERROR' not in resp:
             problems[probid] = [probtype, problem, 'PENDING']
@@ -145,7 +144,7 @@ if __name__ == '__main__':
     parser.add_argument('--open', help="Define si el servidor esta abierto al exterior o no", action='store_true',
                         default=False)
     parser.add_argument('--port', default=None, type=int, help="Puerto de comunicacion del agente")
-    parser.add_argument('--directory', default=None, help="Direccion del servicio de directorio")
+    parser.add_argument('--dir', default=None, help="Direccion del servicio de directorio")
 
     # parsing de los parametros de la linea de comandos
     args = parser.parse_args()
@@ -158,14 +157,16 @@ if __name__ == '__main__':
 
     if args.open:
         hostname = '0.0.0.0'
-        clientid = 'localhost'
     else:
-        clientid = hostname = socket.gethostname()
+        hostname = socket.gethostname()
+
+    clientadd = 'http://%s:%d' % (socket.gethostname(), port)
+    clientid = socket.gethostname().split('.')[0] + '-' + str(port)
 
     if args.directory is None:
         raise NameError('A Directory Service addess is needed')
     else:
-        diraddress = args.directory
+        diraddress = args.dir
 
     # Ponemos en marcha el servidor Flask
     app.run(host=hostname, port=port, debug=True, use_reloader=False)

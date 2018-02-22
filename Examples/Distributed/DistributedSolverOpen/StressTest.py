@@ -31,13 +31,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--n', default=100, type=int, help="Numero de iteraciones del test")
     parser.add_argument('--client', default=None, help="Direccion del cliente que recibe las respuestas")
-    parser.add_argument('--directory', default=None, help="Direccion del servicio de directorio")
+    parser.add_argument('--dir', default=None, help="Direccion del servicio de directorio")
 
     # parsing de los parametros de la linea de comandos
     args = parser.parse_args()
 
     probcounter = 0
-    diraddress = args.directory
+    diraddress = args.dir
     clientaddress = args.client
     testid = ''.join(random.choice(string.lowercase) for i in range(10))
 

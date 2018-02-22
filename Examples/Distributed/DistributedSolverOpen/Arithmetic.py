@@ -93,7 +93,7 @@ if __name__ == '__main__':
     parser.add_argument('--open', help="Define si el servidor esta abierto al exterior o no", action='store_true',
                         default=True)
     parser.add_argument('--port', type=int, help="Puerto de comunicacion del agente")
-    parser.add_argument('--directory', default=None, help="Direccion del servicio de directorio")
+    parser.add_argument('--dir', default=None, help="Direccion del servicio de directorio")
 
     # parsing de los parametros de la linea de comandos
     args = parser.parse_args()
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     if args.directory is None:
         raise NameError('A Directory Service addess is needed')
     else:
-        diraddress = args.directory
+        diraddress = args.dir
 
     # Registramos el solver aritmetico en el servicio de directorio
     solveradd = 'http://%s:%d' % (socket.gethostname(), port)

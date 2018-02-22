@@ -163,7 +163,7 @@ if __name__ == '__main__':
         clientid = hostname = socket.gethostname()
 
     if args.directory is None:
-        diraddress = 'http://polaris.cs.upc.edu:9000'
+        raise NameError('A Directory Service addess is needed')
     else:
         diraddress = args.directory
 

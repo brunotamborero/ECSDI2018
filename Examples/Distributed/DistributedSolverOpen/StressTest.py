@@ -20,13 +20,8 @@ StressTest
 """
 
 from __future__ import print_function
-from multiprocessing import Process
-import socket
 import argparse
-from FlaskServer import shutdown_server
 import requests
-from flask import Flask, request, render_template, url_for, redirect
-import time
 import random, string
 
 __author__ = 'bejar'
@@ -56,8 +51,8 @@ if __name__ == '__main__':
             # Le quitamos el OK de la respuesta
             solveradd = solveradd[4:]
             probid = '%s-%s-%2d' % ('TESTARITH', testid, probcounter)
-            mess = 'SOLVE|%s,%s,%s,%s' % ('ARITH', clientaddress, probid, '1+1')
+            mess = 'SOLVE|%s,%s,%s,%s' % ('ARITH', clientaddress, probid, '%d+%d'% (i, i))
             resp = requests.get(solveradd + '/message', params={'message': mess}, timeout=5).text
             probid = '%s-%s-%2d' % ('TESTMFREQ', testid, probcounter)
-            mess = 'SOLVE|%s,%s,%s,%s' % ('MFREQ', clientaddress, probid, 'aaabbbnnnnasasashkhkhasuyiyiyiqhkhkjhdkahdi')
+            mess = 'SOLVE|%s,%s,%s,%s' % ('MFREQ', clientaddress, probid, ''.join(random.choice(string.lowercase) for i in range(500)))
             resp = requests.get(solveradd + '/message', params={'message': mess}, timeout=5).text

@@ -90,7 +90,7 @@ def info():
     index = np.arange(len(solvers))
     bar_width = 0.35
     fig = plt.figure(figsize=(5, 8), dpi=100)
-    for i, solv, data, type in zip(range(len(lbars)), solvers, lbars, types):
+    for i, data, type in zip(range(len(lbars)), lbars, types):
         plt.barh(index + (i * bar_width), data, bar_width, alpha=0.4, label=type)
 
     plt.ylabel('Solver')

@@ -163,7 +163,7 @@ if __name__ == '__main__':
     clientadd = 'http://%s:%d' % (socket.gethostname(), port)
     clientid = socket.gethostname().split('.')[0] + '-' + str(port)
 
-    if args.directory is None:
+    if args.dir is None:
         raise NameError('A Directory Service addess is needed')
     else:
         diraddress = args.dir

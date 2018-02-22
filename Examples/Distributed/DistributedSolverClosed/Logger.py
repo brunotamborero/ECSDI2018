@@ -138,7 +138,7 @@ if __name__ == '__main__':
     else:
         hostname = socket.gethostname()
 
-    if args.directory is None:
+    if args.dir is None:
         raise NameError('A Directory Service addess is needed')
     else:
         diraddress = args.dir

@@ -6,7 +6,7 @@ Webservice flask con tres entradas
 
  / - Responde con Hola mundo
  /pag - pagina web que enseña una pagina con numeros de 0 al 9
- /agent - Responde con un mensaje diferente si se recibe un GET o un POST
+ /agente - Responde con un mensaje diferente si se recibe un GET o un POST
 
 @author: javier
 """
@@ -37,7 +37,7 @@ def pag():
     return render_template('file.html', values=range(10))
 
 
-@app.route("/agent", methods=['GET', 'POST'])
+@app.route("/agente", methods=['GET', 'POST'])
 def agent1():
     """
     Entrada del Servicio que responde de manera diferente a GET y POST
